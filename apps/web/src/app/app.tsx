@@ -7,6 +7,10 @@ export function App() {
   return (
     <div>
       {/* <NxWelcome title="web" /> */}
+      <NxWelcome title="web" />
+      <div>
+        <h1>Hello World!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
+      </div>
     </div>
   );
 }
