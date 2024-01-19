@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post,Put } from '@nestjs/common';
 
 import { AppService } from './app.service';
 
@@ -6,8 +6,23 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getData() {
-    return this.appService.getData();
+  @Get('all-users')
+  getUsers() {
+    return this.appService.getUsers();
+  }
+
+  @Post('create-user')
+  createUser(@Body() data:{username:string, email: string, name: string}){
+    return this.appService.createUser(data);
+  }
+
+  @Put('update-user')
+  updateUser(@Body() data:{id: number, username:string, email: string, name: string}){
+    return this.appService.updateUser(data);
+  }
+
+  @Delete('delete-user/:id')
+  deleteUser(@Param('id') id: number){
+    return this.appService.deleteUser(+id);
   }
 }
